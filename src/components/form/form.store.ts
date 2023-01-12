@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { IBaseParams, IBaseStoreParams, IBaseValidator } from '../stores/base.store';
-import { BaseStore } from '../stores/base.store';
-import { ControlStore } from '../stores/control.store';
+import { BaseStore, IBaseParams, IBaseStoreParams, IBaseValidator } from '#/helpers/base.store';
+import { ControlStore } from '#/helpers/control.store';
 
 export interface IFormValidatorExtended extends IBaseValidator {
   func?: (store: FormStore) => boolean;

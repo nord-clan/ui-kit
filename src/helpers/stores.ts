@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef } from 'react';
-import { IControlStoreComponents } from '../components/stores/control.store';
+import { IControlStoreComponents } from '#/helpers/control.store';
 import { getId, TControllerRef } from '.';
 
 //* ---- MobX store helpers ------------------------------ * //

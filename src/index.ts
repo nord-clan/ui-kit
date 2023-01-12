@@ -25,10 +25,10 @@ export {
   IBaseValidator,
   IBaseValidatorExtended,
   IValidationErrors,
-} from './components/stores/base.store';
+} from './helpers/base.store';
 export {
   ControlStore,
   IControlStoreComponents,
   IControlStoreParams,
   IControlValidator,
-} from './components/stores/control.store';
+} from './helpers/control.store';

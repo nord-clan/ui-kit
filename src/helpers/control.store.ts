@@ -1,4 +1,3 @@
-import type { Size } from '../../helpers';
 import type {
   IBaseParams,
   IBaseState,
@@ -8,7 +7,7 @@ import type {
 } from './base.store';
 import type { MutableRefObject } from 'react';
 import { action, makeObservable, observable } from 'mobx';
-import { getId } from '../../helpers';
+import { getId, Size } from '#/helpers';
 import { BaseStore } from './base.store';
 
 export interface IControlValidator<T> extends IBaseValidator {

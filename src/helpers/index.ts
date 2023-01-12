@@ -1,7 +1,7 @@
-import type { FormStore } from '../components/form/form.store';
-import type { ControlStore } from '../components/stores/control.store';
 import type { MutableRefObject } from 'react';
 import { v4 } from 'uuid';
+import { FormStore } from '#/components/form/form.store';
+import { ControlStore } from '#/helpers/control.store';
 
 export type TControllerRef<T> = MutableRefObject<T | undefined>;
 export type Size = 's' | 'm' | 'l';

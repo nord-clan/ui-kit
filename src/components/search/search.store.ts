@@ -1,5 +1,4 @@
-import type { IControlStoreParams } from '../stores/control.store';
-import { ControlStore } from '../stores/control.store';
+import { ControlStore, IControlStoreParams } from '#/helpers/control.store';
 
 export interface ISearchStoreParams extends IControlStoreParams<boolean> {
   className?: string;
