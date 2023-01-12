@@ -6,9 +6,6 @@ import { breakpoint, theme } from './theme';
 const globalStyles = (
   <Global
     styles={css`
-      html {
-        scrollbehavior: 'smooth';
-      }
       body {
         min-height: 100%;
         padding: 0;

@@ -1,5 +1,5 @@
-import type { ControlStore } from '../components/control.store';
 import type { FormStore } from '../components/form/form.store';
+import type { ControlStore } from '../components/stores/control.store';
 import type { MutableRefObject } from 'react';
 import { v4 } from 'uuid';
 

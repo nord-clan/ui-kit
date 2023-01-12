@@ -1,5 +1,4 @@
-import type { Size } from '../helpers';
-// eslint-disable-next-line import/no-cycle
+import type { Size } from '../../helpers';
 import type {
   IBaseParams,
   IBaseState,
@@ -9,7 +8,7 @@ import type {
 } from './base.store';
 import type { MutableRefObject } from 'react';
 import { action, makeObservable, observable } from 'mobx';
-import { getId } from '../helpers';
+import { getId } from '../../helpers';
 import { BaseStore } from './base.store';
 
 export interface IControlValidator<T> extends IBaseValidator {
@@ -192,9 +191,9 @@ export class ControlStore<T> extends BaseStore {
         errorMesage: 'Поле должно быть заполнено',
         func: () =>
           !(
-            (typeof this._data === 'string' && this._data === '')
-            || this._data === undefined
-            || (this._data instanceof Array && this._data.length === 0)
+            (typeof this._data === 'string' && this._data === '') ||
+            this._data === undefined ||
+            (this._data instanceof Array && this._data.length === 0)
           ),
       });
     }

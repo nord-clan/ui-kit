@@ -7,14 +7,17 @@ import externals from '@rollup-extras/plugin-externals';
 
 const input = 'src/index.ts';
 
+const lib = require('./package.json');
 const dest = 'dist';
+const year = new Date().getFullYear();
+const banner = `// NordClan-UI v${lib.version} Copyright (c) ${year} ${lib.author} and contributors`;
 
 const plugins = [
-  clean(),
+  clean({ targets: ['dist'] }),
   externals(),
-  resolve(),
-  commonjs(),
+  resolve({ browser: true, extensions: ['.js', '.ts', '.tsx'] }),
   typescript({ tsconfig: './tsconfig.build.json' }),
+  commonjs(),
   binify(),
 ];
 
@@ -26,6 +29,7 @@ export default {
     dir: dest,
     entryFileNames: '[name].js',
     chunkFileNames: '[name].js',
+    banner,
   },
 
   plugins: plugins,

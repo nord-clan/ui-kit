@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "name": "@nord-clan/ui-kit",
   "description": "NordClan storybook",
@@ -32,7 +32,10 @@
     "dist"
   ],
   "engines": {
-    "node": ">=16"
+    "node": ">=16.19.0",
+    "npm": "please use yarn or pnpm",
+    "yarn": ">=1",
+    "pnpm": ">=7"
   },
   "dependencies": {
     "@emotion/cache": "^11.10.5",

@@ -8,3 +8,4 @@ cypress
 dist
 .storybook
 example
+rollup.config.mjs

@@ -38,5 +38,6 @@
       "tslib": ["path/to/node_modules/tslib/tslib.d.ts"]
     }
   },
-  "include": ["src", "stories", "types"],
+  "exclude": ["node_modules", "dist", "docker", ".storybook"],
+  "include": ["src", "stories"]
 }

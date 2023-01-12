@@ -15,3 +15,20 @@ export { FormStore } from './components/form/form.store';
 //* - search - *//
 export { Search } from './components/search/search';
 export { SearchStore } from './components/search/search.store';
+
+//* - stores - *//
+export {
+  BaseStore,
+  IBaseParams,
+  IBaseState,
+  IBaseStoreParams,
+  IBaseValidator,
+  IBaseValidatorExtended,
+  IValidationErrors,
+} from './components/stores/base.store';
+export {
+  ControlStore,
+  IControlStoreComponents,
+  IControlStoreParams,
+  IControlValidator,
+} from './components/stores/control.store';
