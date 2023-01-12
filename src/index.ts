@@ -17,6 +17,10 @@ export { FormStore } from './components/form/form.store';
 export { Search } from './components/search/search';
 export { SearchStore } from './components/search/search.store';
 
+//* - dialog - *//
+export { Dialog,IDialogProps} from './components/dialog/dialog';
+export { BaseDialogStore,IBaseDialogStoreParams } from './components/dialog/dialog.store';
+
 //* - stores - *//
 export {
   BaseStore,
