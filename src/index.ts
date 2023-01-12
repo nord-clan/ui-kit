@@ -1,5 +1,6 @@
 //* - helpers - *//
 export { Size, TControllerRef, getId, setupFormStores } from './helpers';
+export { shadeColor } from './helpers/shade-color';
 export {
   setController,
   useGetController,
