@@ -3,7 +3,7 @@
   "compilerOptions": {
     "module": "esnext",
     "target": "es6",
-    "lib": ["dom", "esnext"],
+    "lib": ["es2020", "dom"],
     "importHelpers": true,
     // output .d.ts declaration files for consumers
     "declaration": true,

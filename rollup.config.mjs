@@ -20,8 +20,23 @@ const plugins = [
   typescript({ tsconfig: './tsconfig.build.json' }),
   commonjs(),
   babel({
-    babelHelpers: 'bundled',
-    presets: ['@babel/preset-react', '@emotion/babel-preset-css-prop'],
+    presets: [
+      [
+        '@babel/preset-env',
+        {
+          bugfixes: true,
+          shippedProposals: true,
+        },
+      ],
+      [
+        '@babel/preset-react',
+        {
+          runtime: 'automatic',
+        },
+      ],
+      '@babel/preset-typescript',
+      '@emotion/babel-preset-css-prop',
+    ],
     include: ['src/**/*.ts', 'src/**/*.tsx'],
     exclude: ['node_modules/**', 'stories/**'],
     extensions: ['.js', '.ts', '.tsx'],
