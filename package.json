@@ -1,5 +1,5 @@
 {
-  "version": "1.0.6",
+  "version": "1.0.7",
   "license": "MIT",
   "name": "@nord-clan/ui-kit",
   "description": "NordClan storybook",
@@ -60,6 +60,8 @@
     "rollup-plugin-typescript2": "0.34.1",
     "tslib": "^2.4.1",
     "uuid": "9.0.0",
+    "@emotion/core": "^11.0.0",
+    "@emotion/server": "^11.10.0",
     "@emotion/babel-preset-css-prop": "^11.10.0",
     "@emotion/cache": "^11.10.5",
     "@emotion/css": "^11.10.5",
