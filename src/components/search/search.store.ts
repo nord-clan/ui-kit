@@ -1,17 +1,46 @@
-import { ControlStore, IControlStoreParams } from '#/helpers/control.store';
+import { makeAutoObservable } from 'mobx';
 
-export interface ISearchStoreParams extends IControlStoreParams<boolean> {
-  className?: string;
-}
+//* ---- Store ---------------------------------------------------------------- *//
+export class SearchStore {
+  private _params: ISearchStoreParams;
 
-export class SearchStore extends ControlStore<boolean> {
+  private _state: ISearchStoreState = {
+    isSearchVisible: false,
+    term: '',
+  };
+
   constructor(params: ISearchStoreParams) {
-    super(params);
+    this._params = params;
 
-    this.setValue(params.defaultValue || false);
+    makeAutoObservable(this);
   }
 
-  show = (): void => this.setIsVisible(true);
+  private _setValue = (value: string) => (this._state.term = value);
 
-  hide = (): void => this.setIsVisible(false);
+  setIsSearchVisible = (value: boolean): boolean => (this._state.isSearchVisible = value);
+
+  onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => this._setValue(e.target.value);
+
+  get state() {
+    return this._state;
+  }
+
+  get params() {
+    return this._params;
+  }
+}
+
+//* ---- Interfaces ---------------------------------------------------------------- *//
+export interface IOptionsItems {
+  id: string;
+  name: string;
+}
+
+export interface ISearchStoreParams {
+  optionsItems?: IOptionsItems[];
+}
+
+export interface ISearchStoreState {
+  isSearchVisible: boolean;
+  term: string;
 }

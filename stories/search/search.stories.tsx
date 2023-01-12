@@ -2,6 +2,7 @@ import type { Meta, Story } from '@storybook/react';
 import { ThemeProvider } from '@emotion/react';
 import React from 'react';
 
+import { v4 } from 'uuid';
 import { Search } from '../../src/components/search/search';
 import { ISearchStoreParams, SearchStore } from '../../src/components/search/search.store';
 import { IStoryThemeProps, ThemesArgs } from '../themes.stories';
@@ -13,23 +14,37 @@ const meta: Meta<ISearchStoreParams> = {
 
 export default meta;
 
-//* - 1 ---------------------------------------------------------------- *//
+//* - Default ---------------------------------------------------------------- *//
 
 interface IStoryProps extends IStoryThemeProps, ISearchStoreParams {}
 
 const Template: Story<IStoryProps> = (props) => {
-  const { themesAvailable, theme, name, ...rest } = props;
+  const { themesAvailable, theme, ...rest } = props;
 
   const store = new SearchStore({
-    name,
     ...rest,
+    optionsItems: [
+      {
+        id: v4(),
+        name: 'Tables',
+      },
+      {
+        id: v4(),
+        name: 'Users',
+      },
+    ],
   });
-
-  const DemoComponent = () => <Search store={store} />;
 
   return (
     <ThemeProvider theme={themesAvailable[theme]}>
-      <DemoComponent />
+      <div style={{ marginTop: '20px', position: 'relative' }}>
+        <Search store={store} />
+        <button
+          type="button"
+          onClick={() => store.setIsSearchVisible(!store.state.isSearchVisible)}>
+          Search
+        </button>
+      </div>
     </ThemeProvider>
   );
 };
@@ -37,5 +52,4 @@ const Template: Story<IStoryProps> = (props) => {
 export const Default = Template.bind({});
 Default.args = {
   ...ThemesArgs,
-  name: 'search',
 };
