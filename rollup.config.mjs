@@ -4,6 +4,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import clean from '@rollup-extras/plugin-clean';
 import binify from '@rollup-extras/plugin-binify';
 import externals from '@rollup-extras/plugin-externals';
+import { babel } from '@rollup/plugin-babel';
 
 const input = 'src/index.ts';
 
@@ -18,6 +19,13 @@ const plugins = [
   resolve({ browser: true, extensions: ['.js', '.ts', '.tsx'] }),
   typescript({ tsconfig: './tsconfig.build.json' }),
   commonjs(),
+  babel({
+    babelHelpers: 'bundled',
+    presets: ['@babel/preset-react', '@emotion/babel-preset-css-prop'],
+    include: ['src/**/*.ts', 'src/**/*.tsx'],
+    exclude: ['node_modules/**', 'stories/**'],
+    extensions: ['.js', '.ts', '.tsx'],
+  }),
   binify(),
 ];
 
