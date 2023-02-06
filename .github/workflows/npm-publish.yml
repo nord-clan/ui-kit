@@ -4,10 +4,10 @@
 name: Npm package
 
 on:
-  # push:
-  #   branches: [master]
-  # release:
-  #   types: [created]
+  push:
+    branches: [master]
+  release:
+    types: [created]
 
 jobs:
   build:

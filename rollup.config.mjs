@@ -1,59 +1,51 @@
-import typescript from 'rollup-plugin-typescript2';
+// rollup.config.js
+import { defineConfig } from 'rollup';
+import typescript from '@rollup/plugin-typescript';
 import commonjs from '@rollup/plugin-commonjs';
-import resolve from '@rollup/plugin-node-resolve';
-import clean from '@rollup-extras/plugin-clean';
-import binify from '@rollup-extras/plugin-binify';
-import externals from '@rollup-extras/plugin-externals';
-import { babel } from '@rollup/plugin-babel';
+import { terser } from 'rollup-plugin-terser';
+import externals from 'rollup-plugin-node-externals';
+import json from '@rollup/plugin-json';
+import analyze from 'rollup-plugin-analyzer'
+//? if need css
+//* import styles from 'rollup-plugin-styles';
 
-const input = 'src/index.ts';
-
-const lib = require('./package.json');
-const dest = 'dist';
-const year = new Date().getFullYear();
-const banner = `// NordClan-UI v${lib.version} Copyright (c) ${year} ${lib.author} and contributors`;
-
-const plugins = [
-  clean({ targets: ['dist'] }),
-  externals(),
-  resolve({ browser: true, extensions: ['.js', '.ts', '.tsx'] }),
-  typescript({ tsconfig: './tsconfig.build.json' }),
-  commonjs(),
-  babel({
-    presets: [
-      [
-        '@babel/preset-env',
-        {
-          bugfixes: true,
-          shippedProposals: true,
-        },
-      ],
-      [
-        '@babel/preset-react',
-        {
-          runtime: 'automatic',
-        },
-      ],
-      '@babel/preset-typescript',
-      '@emotion/babel-preset-css-prop',
+const config = defineConfig([
+  // CJS config
+  {
+    input: ['./src/index.tsx'],
+    output: {
+      dir: 'dist',
+      format: 'cjs',
+      sourcemap: false,
+    },
+    plugins: [
+      json(),
+      commonjs(),
+      externals({ peerDeps: true }),
+      typescript({ declarationDir: 'dist/types', sourceMap: false, tsconfig:'tsconfig.build.json' }),
+      terser(),
+      analyze()
     ],
-    include: ['src/**/*.ts', 'src/**/*.tsx'],
-    exclude: ['node_modules/**', 'stories/**'],
-    extensions: ['.js', '.ts', '.tsx'],
-  }),
-  binify(),
-];
-
-export default {
-  input,
-
-  output: {
-    format: 'cjs',
-    dir: dest,
-    entryFileNames: '[name].js',
-    chunkFileNames: '[name].js',
-    banner,
   },
+  // ESM config
+  {
+    input: ['./src/index.tsx'],
+    output: {
+      dir: 'dist/esm',
+      format: 'esm',
+      preserveModules: true,
+      preserveModulesRoot: 'src',
+      sourcemap: false,
+    },
+    plugins: [
+      json(),
+      commonjs(),
+      externals({ peerDeps: true }),
+      typescript({ outDir: 'dist/esm', declaration: false, sourceMap: false }),
+      terser(),
+      analyze()
+    ],
+  }
+]);
 
-  plugins: plugins,
-};
+export default config

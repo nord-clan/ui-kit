@@ -7,13 +7,13 @@
 pnpm-lock.yaml
 /dist
 build-storybook.log
+storybook-static
 
 # testing
 /coverage
-
+.pnpm-store
 # production
 /build
-dist
 
 # misc
 .DS_Store
@@ -29,3 +29,4 @@ yarn-error.log*
 /package-lock.json
 /lib
 /storybook-static
+.vercel

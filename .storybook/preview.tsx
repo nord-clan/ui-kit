@@ -1,8 +1,3 @@
-// globals styles
-import createCache from '@emotion/cache';
-import { ThemeProvider, CacheProvider } from '@emotion/react';
-import { theme } from '../src/shared/theme';
-import globalStyles from '../src/shared/globals.styled';
 import React from 'react';
 
 // Default Setting
@@ -11,8 +6,8 @@ export const parameters = {
   controls: {
     matchers: {
       color: /(background|color)$/i,
-      date: /Date$/,
-    },
+      date: /Date$/
+    }
   },
   // Add Custom Background
   backgrounds: {
@@ -20,35 +15,18 @@ export const parameters = {
     values: [
       {
         name: 'bgWhite',
-        value: '#fafafa',
+        value: '#fafafa'
       },
       {
         name: 'white',
-        value: '#FFFFFF',
+        value: '#FFFFFF'
       },
       {
         name: 'black',
-        value: '#212121',
-      },
-    ],
-  },
+        value: '#212121'
+      }
+    ]
+  }
 };
 
-const cache = createCache({
-  prepend: true,
-  key: 'sb',
-  ...((process.env.NODE_ENV === 'development' || 'test') && {
-    stylisPlugins: [],
-  }),
-});
-
-export const decorators = [
-  (Story) => (
-    <CacheProvider value={cache}>
-      <ThemeProvider theme={theme}>
-        {globalStyles}
-        <Story />
-      </ThemeProvider>
-    </CacheProvider>
-  ),
-];
+export const decorators = [(Story) => <Story />];
